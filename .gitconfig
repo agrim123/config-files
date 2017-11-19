@@ -1,0 +1,26 @@
+[color]
+	ui = true
+[user]
+	name =
+	email =
+	signingkey =
+
+[alias]
+# Gives a nice summary of what you did, useful if you have standup meetings 
+# Takes an input -> time since which you need to see commits
+standup = "!f() { git pretty-log --since=\"$1\"; }; f"
+
+# Pretty log
+pretty-log = !git log --all \
+		--author=\"$(git config --get user.name)\" \
+		--decorate=full \
+		--oneline \
+		--graph \
+		--format=\"%C(auto)%h -> %Cgreen%s%Creset -> %an %Cblue(%ar)\" \
+		--shortstat --summary
+
+# Shows commits yet to be pushed
+extra-local = !git log origin/\"$(git rev-parse --abbrev-ref HEAD)\"...HEAD
+
+# Shows all ignored files
+ignored = !git status --ignored
