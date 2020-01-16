@@ -7,6 +7,14 @@ toggle_ls() {
   fi
 }
 
+ip() {
+    echo "$(ifconfig | grep "inet " | grep -v 127.0.0.1 | cut -d\  -f2)"
+}
+
+source $HOME/.iterm2_shell_integration.zsh
+iterm2_print_user_vars() {
+  iterm2_set_user_var ip $(ip)
+}
 # Get cheat sheet of command from cheat.sh. h <cmd>
 h() {
   curl cheat.sh/${@:-cheat}
