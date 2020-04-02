@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+COMMIT_FILE=$1
+START_LINE=`head -n1 $COMMIT_FILE`
+if [[ ! "$START_LINE" =~ ^\([A-Za-z_-]+\)\ [A-Z][A-Za-z0-9\ \_\-] ]]; then
+  echo "Bad commit message, see example: (scope) Commit message"
+  exit 1
+fi
+
+if [[ ${#START_LINE} > 50 ]]; then
+    echo "Too long message"
+    exit 1
+fi
+
+if [[ "${START_LINE: -1}" = "." ]]; then
+    echo "Should not end with period"
+    exit 1
+fi
