@@ -13,5 +13,7 @@ source ~/zsh/alias.zsh
 source ~/zsh/bindings.zsh
 source ~/zsh/functions.zsh
 
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh" || true
+
 #zprof
 #zmodload -u zsh/zprof
