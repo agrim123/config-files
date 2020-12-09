@@ -1,12 +1,3 @@
-# Swtich to colorls (https://github.com/athityakumar/colorls)
-toggle_ls() {
-  if [[ $(type ls) == "ls is an alias for colorls" ]]; then 
-    alias ls="ls -G"
-  else
-    alias ls="colorls"
-  fi
-}
-
 ip() {
     echo "$(ifconfig | grep "inet " | grep -v 127.0.0.1 | cut -d\  -f2)"
 }
@@ -21,16 +12,10 @@ h() {
   # curl cheat.sh/$@
 }
 
-# watch() {
-#   while :; 
-#   do 
-#     clear
-#     date
-#     echo "Running: $@"
-#     $@
-#     sleep 2s
-#   done
-# }
+# https://superuser.com/questions/250227/how-do-i-see-what-my-most-used-linux-command-are
+most() {
+  history | awk '{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;}' | grep -v "./" | column -c3 -s " " -t | sort -nr | nl |  head -n10
+}
 
 # Open docker shell for a container
 ds() {
@@ -45,26 +30,6 @@ ds() {
   docker exec -it "${container}" "${shell}"
 }
 
-clean() {
-  branch=$(git config --get base.branch)
-
-  if [ -z "$branch" ]; then
-    branch="master"
-  fi
-
-  echo "[castle] Cleaning upstream/$branch"
-  git stash save "abc" && gco $branch && git pull --rebase upstream $branch
-}
-
-cleandev() {
-  gco master
-  gb -D dev
-
-  clean
-
-  git push upstream master:dev -f && git fetch upstream && gco upstream/dev && gco -b dev
-}
-
 # continuous rebase given $1 number of times 
 crebase() {
   for i in {1..$1}
@@ -75,8 +40,8 @@ crebase() {
   done
 }
 
-# cfile <file> - Copy content of file to clipboard
-cfile() {
+# cf <file> - Copy content of file to clipboard
+cf() {
   cat $1 | pbcopy
 }
 

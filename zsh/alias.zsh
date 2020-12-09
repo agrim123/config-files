@@ -1,13 +1,8 @@
 # ALiases
 alias _="sudo"
-alias all="sed -n '/^alias/p' ~/.zshrc"
 alias refresh="echo 'Refreshing .zshrc\n' && source ~/.zshrc"
-alias redis-start="redis-server /usr/local/etc/redis.conf"
 alias docker-start="open --background -a Docker"
 alias edit="vim ~/.zshrc"
 alias restart-ssh="sudo launchctl unload /System/Library/LaunchDaemons/ssh.plist && sudo launchctl load -w /System/Library/LaunchDaemons/ssh.plist"
 alias code="/usr/local/bin/code"
-alias gpo="git push origin"
-alias gpu="git push upstream"
 alias gcp="git cherry-pick"
-alias tmp="cd /tmp"
