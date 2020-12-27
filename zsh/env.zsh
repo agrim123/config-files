@@ -16,15 +16,13 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
 export PATH="/usr/local/opt/php@7.1/bin:$PATH"
 export PATH="/usr/local/opt/php@7.1/sbin:$PATH"
-#export PATH="/Users/agrim/Downloads/apache-maven-3.6.0/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export GPG_TTY=$(tty)
-export PATH=$PATH:$M2_HOME/bin
 
 #export NVM_DIR="$HOME/.nvm"
     #[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 #  [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
 
-[ -s "/Users/agrim/.scm_breeze/scm_breeze.sh" ] && source "/Users/agrim/.scm_breeze/scm_breeze.sh"
+[ -s "~/.scm_breeze/scm_breeze.sh" ] && source "~/.scm_breeze/scm_breeze.sh"
 
 typeset -U PATH
