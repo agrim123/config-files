@@ -17,3 +17,11 @@ alias mexec="chmod +x "
 alias gcp="git cherry-pick"
 alias gpom="git push origin master"
 alias gpos="git push origin staging"
+alias reset-staging="git stash && gco master && git pull --rebase origin master && gb -D staging; gco -b staging && git push origin staging -f"
+alias push-staging="gb -D staging; gco -b staging && git push origin staging -f"
+alias update-master="gco master && git pull --rebase origin master && gb"
+
+# Useful when testing golang pkgs
+alias last-commit="git rev-parse HEAD | cut -c1-12"
+
+source $HOME/dotfiles/custom/alias.zsh
