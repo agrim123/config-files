@@ -2,7 +2,7 @@ ip() {
     echo "$(ifconfig | grep "inet " | grep -v 127.0.0.1 | cut -d\  -f2)"
 }
 
-source $HOME/.iterm2_shell_integration.zsh
+# source $HOME/.iterm2_shell_integration.zsh
 iterm2_print_user_vars() {
   iterm2_set_user_var ip $(ip)
 }
@@ -28,16 +28,6 @@ ds() {
   echo "[castle] Opening ${shell} for ${container}"
 
   docker exec -it "${container}" "${shell}"
-}
-
-# continuous rebase given $1 number of times 
-crebase() {
-  for i in {1..$1}
-  do
-    if !$(git commit --amend --no-edit -S && git rebase --continue); then
-      echo "[castle] Encountered error"
-    fi
-  done
 }
 
 # cf <file> - Copy content of file to clipboard
@@ -131,3 +121,6 @@ ram() {
   fi
 }
 
+rds_connections() {
+  echo $(($1*1024*1024/12582880))
+}
